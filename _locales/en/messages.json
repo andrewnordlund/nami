@@ -1,0 +1,14 @@
+{
+    "extensionName": {
+        "message": "NAMI",
+        "description": "Name of the extension."
+    },
+    "extensionDescription": {
+        "message": "Nordburg Accessibility Mistake Indicator",
+        "description": "Description of the extension."
+    },
+    "defaultTitle": {
+        "message": "nami",
+        "description": "What's shown in the mouse-over."
+    }
+}

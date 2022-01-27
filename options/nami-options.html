@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>NAMI</title>
+		<link rel="Stylesheet" type="text/css" href="nami-options.css">
+		<script src="/libs/nami.js"></script>
+	</head>
+	<body>
+		<header><h1>NAMI</h1></header>
+		<main>
+			<section id="optionsSection">
+				<h2>Options</h2>
+
+			</section>
+			<section id="devSection">
+				<h2>Developer Options</h2>
+				<!-- dbug -->
+				<div>
+					<input type="checkbox" name="dbugChk" id="dbugChk">
+					<label for="dbugChk">Debugging</label>
+				</div>
+				<div>
+					<label for="syncURL">URL for Syncing</label>
+					<input type="url" id="syncURL" name="syncURL" size="50">
+				</div>
+			</section>
+			<div id="buttonsHolder">
+				<button id="saveBtn">Save</button>
+				<button id="cancelBtn">Cancel</button>
+				<button id="restoreDefaultsBtn">Restore Defaults</button>
+				<div id="loggedInButtonsHolderDiv"></div>
+			</div>
+		</main>
+		<footer>
+		</footer>
+		<script src="nami-options.js"></script>
+	<body>
+</html>
