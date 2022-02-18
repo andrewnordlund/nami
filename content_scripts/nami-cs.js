@@ -1,13 +1,21 @@
+if (typeof (namiCS) == "undefined") {
+	var namiCS = {};
+}
+
 var namiCS = {
 	dbug : nami.dbug,
 	usingTmp : false,
 	init : function () {
 	}, // End of init
 	
-	startup : function () {
+	run : function () {
+		if (namiCS.dbug) console.log ("namiCS::running....");
 	}, // End of startup
 	notify : function (message) {
 		if (namiCS.dbug) console.log ("namiCS::Got a message: " + message["msg"] + ", task: " + message["task"] + "."); // from " + message["pageURL"]);
+		/*
+		   Don't do this.  It defeats the purpose of XRay Vision.  It messes with the page itself.  If you want to be better than WAVE don't act like WAVE.
+		   However, I'll leave this here in case Chrome forces my hand.
 		let head = null;
 		head = document.getElementsByTagName("head");
 		if (head) {
@@ -20,6 +28,7 @@ var namiCS = {
 		} else {
 			if (namiCS.dbug) console.log ("Didn't get head.");
 		}
+		*/
 		/* 
 		   // deal with tasks here
 		if (message["task"] == "someTask") {
@@ -27,7 +36,7 @@ var namiCS = {
 		*/
 	}, // End of notify
 } // End of namiCS
-
+/*
 document.addEventListener("DOMContentLoaded", function () {
 	if (namiCS.dbug) console.log ("Content loaded, getting stored stuff.");
 	//nami.getSaved(namiCS.startup, nami.errorFun);
@@ -56,12 +65,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	}, nami.errorFun);
 }, false);
-
+*/
 browser.runtime.onMessage.addListener(namiCS.notify);
-
-if (namiCS.dbug) console.log ("namiCS.js loaded.");
 
 nami.addToPostLoad([function () {
 	if (namiCS.dbug === false && nami.dbug === true) console.log ("turning namiCS.dbug on.");
 	namiCS.dbug = nami.dbug;
 }]);
+if (namiCS.dbug) console.log ("namiCS.js loaded.  Now gonna run.");
+namiCS.run();
