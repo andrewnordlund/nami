@@ -4,21 +4,9 @@ if (typeof (namiFS) == "undefined") {
 
 namiFS = {
 	run :  function () {
-		// insert styleSheet
-		namiFS.insertCSS();
 		// Look for autocomplete:
 		namiFS.autocomplete();
 	}, // End of run
-	insertCSS() {
-		let head = document.querySelect("head");
-		let namiStyle= document.createElement("style");
-		namiStyle.setAttribute("id", "nordNamiStyle");
-		
-		
-
-
-		head.appendChild(namiStyle);
-	}, // End of insertCSS
 	autocomplete :  function () {
 		let forms, inputs, selects, textareas = null
 		forms = document.getElementsByTagName("form");
