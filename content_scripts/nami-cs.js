@@ -21,10 +21,10 @@ var namiCS = {
 		if (head) {
 			if (namiCS.dbug) console.log ("Got head.");
 			head = head[0];
-			let namiFS = document.createElement("script");
-			namiFS.setAttribute("id", "namiFS");
-			namiFS.setAttribute("src", "moz-extension://aedc443d-896c-4eef-b7d8-ae360fb122a5/content_scripts/namiFS.js");
-			head.appendChild(namiFS);
+			let namiBML = document.createElement("script");
+			namiBML.setAttribute("id", "namiBML");
+			namiBML.setAttribute("src", "moz-extension://aedc443d-896c-4eef-b7d8-ae360fb122a5/content_scripts/namiBML.js");
+			head.appendChild(namiBML);
 		} else {
 			if (namiCS.dbug) console.log ("Didn't get head.");
 		}

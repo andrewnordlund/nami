@@ -17,7 +17,7 @@ var namiBG = {
 							browser.tabs.insertCSS(tabs[0].id, {file : "/content_scripts/nami.css"}).then(function () {
 								browser.tabs.executeScript(tabs[0].id, {file : "/libs/nami.js"}).then (function () {
 									browser.tabs.executeScript(tabs[0].id, {file : "/content_scripts/nami-cs.js"}).then (function () {
-										browser.tabs.executeScript(tabs[0].id, {file : "/content_scripts/namiFS.js"}).then(function () {
+										browser.tabs.executeScript(tabs[0].id, {file : "/content_scripts/nami-bml.js"}).then(function () {
 											browser.tabs.sendMessage(tabs[0].id, {"task": "run", "msg" : "Do work or cleanup", "dbug": namiBG.dbug}).then(function (msg) {
 												if (namiBG.dbug) console.log ("Promise eventually fulfilled.");
 											}, nami.errorFun);

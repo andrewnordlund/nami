@@ -1,3 +1,20 @@
-body {
-	background-color: green;
+details.nordburg-nami {
+	width: 30em;
+	
+}
+details.nordburg-nami dl {
+  width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+details.nordburg-nami dt, details.nordburg-nami dd {
+ 	display: block;
+	margin-left: 0;
+	float: left;
+}
+details.nordburg-nami dt {
+	width: 30%
+}
+details.nordburg-nami dd {
+	width: 70%
 }
