@@ -8,7 +8,7 @@ var namiBG = {
 		var gettingActiveTab = browser.tabs.query({active: true, currentWindow: true});
 		gettingActiveTab.then((tabs) => {
 			if (tabs[0].url.match(/^https?:\/\//)) {
-				if (namiBG.dbug) console.log ("namiBG::About to call the content script.");
+				if (namiBG.dbug) console.log ("namiBG::About to call the content script with task run.");
 				browser.tabs.sendMessage(tabs[0].id, {"task": "run", "dbug": namiBG.dbug}).then( function () {
 						if (namiBG.dbug) console.log ("namiBG::Sending message to namiCS worked!");
 					}).catch(function (x) {		// NOTE:  In other add-ons I've writtenm it's }, thing.errorFun).catch.  But in this add-on, the errorFun gets executed, but the catch block doesn't.
@@ -18,9 +18,9 @@ var namiBG = {
 								browser.tabs.executeScript(tabs[0].id, {file : "/libs/nami.js"}).then (function () {
 									browser.tabs.executeScript(tabs[0].id, {file : "/content_scripts/nami-cs.js"}).then (function () {
 										browser.tabs.executeScript(tabs[0].id, {file : "/content_scripts/nami-bml.js"}).then(function () {
-											browser.tabs.sendMessage(tabs[0].id, {"task": "run", "msg" : "Do work or cleanup", "dbug": namiBG.dbug}).then(function (msg) {
+											//browser.tabs.sendMessage(tabs[0].id, {"task": "run", "msg" : "Do work or cleanup", "dbug": namiBG.dbug}).then(function (msg) {
 												if (namiBG.dbug) console.log ("Promise eventually fulfilled.");
-											}, nami.errorFun);
+											//}, nami.errorFun);
 										}, nami.errorFun);
 									}, nami.errorFun);
 								}, nami.errorFun);

@@ -29,11 +29,26 @@ var namiCS = {
 			if (namiCS.dbug) console.log ("Didn't get head.");
 		}
 		*/
-		/* 
+		 
 		   // deal with tasks here
-		if (message["task"] == "someTask") {
+		
+		if (message["task"] == "run") {
+			if (namiCS.dbug) console.log ("namiCS::running....");
+			namiBML.run();
+			/*
+			let isthere = null;
+			isthere = document.querySelector(".nordburg-nami");
+			if (isthere) {
+				if (namiCS.dbug) console.log ("namiCS::resetting....");
+				namiBML.reset();
+			} else {
+				if (namiCS.dbug) console.log ("namiCS::running....");
+				namiBML.run();
+			}
+			*/
 		}
-		*/
+		
+		
 	}, // End of notify
 } // End of namiCS
 /*

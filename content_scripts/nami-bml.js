@@ -4,9 +4,32 @@ if (typeof (namiBML) == "undefined") {
 
 namiBML = {
 	dbug : true,
+	alreadyRan : false,
 	run :  function () {
 		// Look for autocomplete:
-		namiBML.autocomplete();
+		console.log ("namiBML::running...");
+		let namiEls = document.querySelectorAll(".nordburg-nami");
+		console.log ("namiBML::namiEls: " + namiEls + ".");
+		if (namiEls.length > 0) {
+			console.log ("namiBML::Gonna get rid of " + namiEls.length + " nami elements.");
+			for (let i = 0; i<namiEls.length;i++) {
+				namiEls[i].parentNode.removeChild(namiEls[i]);
+			}
+		} else {
+			console.log ("namiBML::Gonna....ahhh I see....gonna do autocomplete and stuff.");
+			namiBML.autocomplete();
+		}
+
+		/*
+		if (namiBML.alreadyRan) {
+			namiBML.reset();
+			namiBML.alreadyRan = false;
+		} else {
+			namiBML.autocomplete();
+			namiBML.alreadyRan = true;
+		}
+		console.log ("alreadyRan: " + namiBML.alreadyRan);
+		*/
 	}, // End of run
 	autocomplete :  function () {
 		let forms, inputs, selects, textareas = null
@@ -35,18 +58,27 @@ namiBML = {
 				let newDT = namiBML.createHTMLElement(document, "dt", {"parentNode":innards, "textNode":things[j]});
 				let newDD = namiBML.createHTMLElement(document, "dd", {"parentNode":innards, "textNode":(forms[i].hasAttribute(things[j]) ? forms[i].getAttribute(things[j]) : "N/A")});
 			}
+			/*
 			if (forms[i].hasAttribute("autocomplete")) {
 				if (namiCS.dbug) console.log ("autocomplete=" + forms[i].getAttribute("autocomplete") + ".");
 			} else {
 				if (namiCS.dbug) console.log ("No autocomplete.");
 			}
+			*/
 		}
 	}, // End of autocomplete
+	reset : function () {
+		let els = null;
+		els = document.querySelectorAll(".nordburg-nami");
+		for (let i = 0; i<els.length;i++) {
+			els[i].parentNode.removeChild(els[i]);
+		}
+	}, // End of reset
 
 
 	/* Shamelessly stolen from nordburg.js.  But, hey!  nordburg.js is _my_ library!  I can do what I want! */
 	createHTMLElement : function (creator, type, attribs) {
-		var dbug = (((arguments.length == 4 &&arguments[3] != null && arguments[3] != undefined) || namiBML.dbug == true) ? true : false);
+		var dbug = false; //(((arguments.length == 4 &&arguments[3] != null && arguments[3] != undefined) || namiBML.dbug == true) ? true : false);
 		if (dbug) console.log ("createHTMLElement::dbug: " + dbug + " because arguments.length: " + arguments.length + ", and argument[3]: " + arguments[3] + ".");
 		if (dbug) console.log("namiBML::createHTMLElement " + type + (attribs.hasOwnProperty("id") ? "#" + attribs["id"] : "") + (attribs.hasOwnProperty("textNode") ? " containing " + attribs["textNode"] : "") + ".");
 		// From: http://stackoverflow.com/questions/26248599/instanceof-htmlelement-in-iframe-is-not-element-or-object
@@ -105,6 +137,6 @@ namiBML = {
 		return rv;
 	}, // End of getHTMLElement
 }
-namiBML.run();
 
 console.log ("namiBML loaded.");
+namiBML.run();
